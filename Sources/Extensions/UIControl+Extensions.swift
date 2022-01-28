@@ -1,5 +1,5 @@
 import Combine
-import CoreUtils
+import Core
 import UIKit
 
 private var isHighlightedBlockKey: UInt8 = 0

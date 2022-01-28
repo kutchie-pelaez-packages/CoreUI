@@ -1,5 +1,5 @@
 import UIKit
-import CoreUtils
+import Core
 
 extension UIMenuElement {
     public static func action(

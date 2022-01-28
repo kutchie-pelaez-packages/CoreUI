@@ -1,5 +1,5 @@
 import UIKit
-import CoreUtils
+import Core
 
 extension UIColor: Reassignable {
     public static var random: UIColor {

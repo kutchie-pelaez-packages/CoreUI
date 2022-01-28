@@ -1,5 +1,5 @@
 import UIKit
-import CoreUtils
+import Core
 
 extension UIGestureRecognizer {
     convenience init(action: @escaping (UIGestureRecognizer) -> Void) {

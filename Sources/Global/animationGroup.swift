@@ -1,4 +1,4 @@
-import CoreUtils
+import Core
 import UIKit
 
 public func animationGroup(

@@ -1,4 +1,4 @@
-import CoreUtils
+import Core
 
 public protocol Animatable {
     func run(completion: @escaping Block)

@@ -1,4 +1,4 @@
-import CoreUtils
+import Core
 
 public struct NoOpAnimation: Animatable {
     public init(block: Block? = nil) {

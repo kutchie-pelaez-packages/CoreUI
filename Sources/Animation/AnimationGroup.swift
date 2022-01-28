@@ -1,4 +1,4 @@
-import CoreUtils
+import Core
 
 public struct AnimationGroup: Animatable {
     public init(_ animations: [Animatable?]) {

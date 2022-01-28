@@ -1,5 +1,5 @@
 import UIKit
-import CoreUtils
+import Core
 
 public struct AnimationChain: Animatable {
     public struct Link {

@@ -1,5 +1,5 @@
 import UIKit
-import CoreUtils
+import Core
 
 extension UINavigationController {
     public convenience init(
