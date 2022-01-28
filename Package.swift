@@ -8,7 +8,12 @@ let package = Package(
         .iOS("15")
     ],
     products: [
-        .library(name: "CoreUI", targets: ["CoreUI"])
+        .library(
+            name: "CoreUI",
+            targets: [
+                "CoreUI"
+            ]
+        )
     ],
     dependencies: [
         .package(name: "Core", url: "https://github.com/kutchie-pelaez-packages/Core.git", .branch("master"))
