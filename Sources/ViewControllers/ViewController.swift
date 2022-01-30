@@ -75,7 +75,11 @@ open class ViewController: UIViewController {
     public var cancellables = [AnyCancellable]()
 
     public func invokeWhenViewIsLoaded(_ block: @escaping Block) {
-        viewDidLoadBlocks.append(block)
+        if isViewLoaded {
+            block()
+        } else {
+            viewDidLoadBlocks.append(block)
+        }
     }
 
     open func preSetup() { }
