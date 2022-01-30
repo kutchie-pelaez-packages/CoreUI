@@ -22,7 +22,7 @@ open class View: UIView {
 
     // MARK: -
 
-    private func setup() {
+    open func setup() {
         preSetup()
         subscribeToEvents()
         configureViews()
