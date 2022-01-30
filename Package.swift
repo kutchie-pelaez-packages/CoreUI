@@ -17,16 +17,14 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Core", url: "https://github.com/kutchie-pelaez-packages/Core.git", .branch("master")),
-        .package(name: "SnapKit", url: "https://github.com/kutchie-pelaez-packages/SnapKit.git", .branch("master")),
-        .package(name: "Wording", url: "https://github.com/kutchie-pelaez-packages/Wording.git", .branch("master"))
+        .package(name: "SnapKit", url: "https://github.com/kutchie-pelaez-packages/SnapKit.git", .branch("master"))
     ],
     targets: [
         .target(
             name: "CoreUI",
             dependencies: [
                 .product(name: "Core", package: "Core"),
-                .product(name: "SnapKit", package: "SnapKit"),
-                .product(name: "Wording", package: "Wording")
+                .product(name: "SnapKit", package: "SnapKit")
             ],
             path: "Sources"
         )
