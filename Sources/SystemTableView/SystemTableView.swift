@@ -183,7 +183,13 @@ public final class SystemTableView:
             headerView.contentConfiguration = contentConfiguration
         }
 
-        contentConfiguration.text = header.string
+        if let font = header.font {
+            contentConfiguration.attributedText = header.string
+                .attributed
+                .appending(font, for: .font)
+        } else {
+            contentConfiguration.text = header.string
+        }
 
         return headerView
     }

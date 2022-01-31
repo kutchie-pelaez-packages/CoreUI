@@ -288,11 +288,16 @@ extension SystemTableView {
 
 extension SystemTableView {
     public struct SystemHeader {
-        public init(string: String) {
+        public init(
+            string: String,
+            font: UIFont? = nil
+        ) {
             self.string = string
+            self.font = font
         }
 
         public var string: String
+        public var font: UIFont?
     }
 }
 
