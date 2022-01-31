@@ -253,8 +253,8 @@ public final class SystemTableView:
         case let .system(systemRow):
             return systemRow.action != nil && systemRow.enabled
 
-        case .custom:
-            return false
+        case let .custom(customRow):
+            return customRow.action.isNotNil
         }
     }
 
