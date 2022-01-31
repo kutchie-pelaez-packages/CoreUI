@@ -7,8 +7,8 @@ public final class SystemTableView:
     UITableViewDelegate
 {
 
-    public init() {
-        super.init(frame: .zero, style: .insetGrouped)
+    public init(style: UITableView.Style) {
+        super.init(frame: .zero, style: style)
         setup()
     }
 
