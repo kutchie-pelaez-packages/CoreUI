@@ -4,12 +4,12 @@ import UIKit
 open class TableViewCell: UITableViewCell {
     public init() {
         super.init(style: .default, reuseIdentifier: Self.reusableIdentifier)
-        configureSelf()
+        setup()
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureSelf()
+        setup()
     }
 
     @available(*, unavailable)
@@ -21,7 +21,7 @@ open class TableViewCell: UITableViewCell {
 
     // MARK: -
 
-    func configureSelf() {
+    open func setup() {
         preSetup()
         configureViews()
         constraintViews()
