@@ -6,8 +6,14 @@ public final class SystemTableView:
     UITableViewDataSource,
     UITableViewDelegate
 {
+
+    public init() {
+        super.init(frame: .zero, style: .insetGrouped)
+        setup()
+    }
+
     public override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: .insetGrouped)
+        super.init(frame: frame, style: style)
         setup()
     }
 
