@@ -275,8 +275,8 @@ public final class SystemTableView:
         case let .system(systemRow):
             systemRow.action?()
 
-        case .custom:
-            return
+        case let .custom(customRow):
+            customRow.action?()
         }
     }
 }

@@ -64,12 +64,14 @@ extension SystemTableView {
 
         public init(
             type: AnyClass,
-            transformer: @escaping (UITableViewCell) -> Void
+            transformer: @escaping (UITableViewCell) -> Void,
+            action: Block? = nil
         ) {
             self = .custom(
                 CustomRow(
                     type: type,
-                    transformer: transformer
+                    transformer: transformer,
+                    action: action
                 )
             )
         }
@@ -273,14 +275,17 @@ extension SystemTableView {
     public struct CustomRow {
         public init(
             type: AnyClass,
-            transformer: @escaping (UITableViewCell) -> Void
+            transformer: @escaping (UITableViewCell) -> Void,
+            action: Block?
         ) {
             self.type = type
             self.transformer = transformer
+            self.action = action
         }
 
         let type: AnyClass
         let transformer: (UITableViewCell) -> Void
+        let action: Block?
     }
 }
 
