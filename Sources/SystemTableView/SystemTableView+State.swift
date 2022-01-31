@@ -290,14 +290,17 @@ extension SystemTableView {
     public struct SystemHeader {
         public init(
             string: String,
-            font: UIFont? = nil
+            font: UIFont? = nil,
+            color: UIColor?
         ) {
             self.string = string
             self.font = font
+            self.color = color
         }
 
         public var string: String
         public var font: UIFont?
+        public var color: UIColor?
     }
 }
 

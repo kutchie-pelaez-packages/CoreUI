@@ -183,10 +183,20 @@ public final class SystemTableView:
             headerView.contentConfiguration = contentConfiguration
         }
 
+        var attributes = [NSAttributedString.Key: Any]()
+
         if let font = header.font {
-            contentConfiguration.attributedText = header.string
-                .attributed
-                .appending(font, for: .font)
+            attributes[.font] = font
+        }
+        if let color = header.color {
+            attributes[.foregroundColor] = color
+        }
+
+        if attributes.isNotEmpty {
+            contentConfiguration.attributedText = NSAttributedString(
+                string: header.string,
+                attributes: attributes
+            )
         } else {
             contentConfiguration.text = header.string
         }
