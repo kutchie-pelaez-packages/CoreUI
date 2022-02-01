@@ -296,7 +296,7 @@ extension SystemTableView {
         public init(
             string: String,
             font: UIFont? = nil,
-            color: UIColor?
+            color: UIColor? = nil
         ) {
             self.string = string
             self.font = font
