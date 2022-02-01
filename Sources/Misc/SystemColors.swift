@@ -14,8 +14,6 @@ public enum SystemColors {
     }
 
     public enum Label {
-        public static let light = UIColor.lightText
-        public static let dark = UIColor.darkText
         public static let primary = UIColor.label
         public static let secondary = UIColor.secondaryLabel
         public static let tertiary = UIColor.tertiaryLabel
@@ -39,7 +37,7 @@ public enum SystemColors {
     }
 
     public enum Tint {
-        public static let primary = UIColor.tintColor
+        public static let black = UIColor.black
         public static let blue = UIColor.systemBlue
         public static let brown = UIColor.systemBrown
         public static let cyan = UIColor.systemCyan
@@ -48,9 +46,11 @@ public enum SystemColors {
         public static let mint = UIColor.systemMint
         public static let orange = UIColor.systemOrange
         public static let pink = UIColor.systemPink
+        public static let primary = UIColor.tintColor
         public static let purple = UIColor.systemPurple
         public static let red = UIColor.systemRed
         public static let teal = UIColor.systemTeal
+        public static let white = UIColor.white
         public static let yellow = UIColor.systemYellow
     }
 
