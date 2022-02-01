@@ -13,7 +13,7 @@ extension SystemTableView {
             self.init(sections: sections)
         }
 
-        var sections: [Section]
+        let sections: [Section]
     }
 }
 
@@ -64,7 +64,7 @@ extension SystemTableView {
 
         public init(
             type: AnyClass,
-            transformer: @escaping (UITableViewCell) -> Void,
+            transformer: Transformer? = nil,
             action: Block? = nil
         ) {
             self = .custom(
@@ -107,75 +107,67 @@ extension SystemTableView {
 
     public struct SystemContent {
         public init(
-            title: SystemTitle,
-            subtitle: SystemSubtitle? = nil
+            title: Title,
+            subtitle: Subtitle? = nil
         ) {
             self.title = title
             self.subtitle = subtitle
         }
 
-        let title: SystemTitle
-        let subtitle: SystemSubtitle?
-    }
+        let title: Title
+        let subtitle: Subtitle?
 
-    public struct SystemTitle {
-        public init (
-            string: String,
-            font: UIFont? = nil,
-            color: UIColor? = nil,
-            alignment: Alignment? = nil
-        ) {
-            self.string = string
-            self.font = font
-            self.color = color
-            self.alignment = alignment
+        public struct Title {
+            public init (
+                text: String,
+                font: UIFont? = nil,
+                color: UIColor? = nil,
+                alignment: UIListContentConfiguration.TextProperties.TextAlignment? = nil
+            ) {
+                self.text = text
+                self.font = font
+                self.color = color
+                self.alignment = alignment
+            }
+
+            let text: String
+            let font: UIFont?
+            let color: UIColor?
+            let alignment: UIListContentConfiguration.TextProperties.TextAlignment?
         }
 
-        let string: String
-        let font: UIFont?
-        let color: UIColor?
-        let alignment: Alignment?
+        public struct Subtitle {
+            public init (
+                text: String,
+                font: UIFont? = nil,
+                color: UIColor? = nil
+            ) {
+                self.text = text
+                self.font = font
+                self.color = color
+            }
 
-        public enum Alignment {
-            case natural
-            case justified
-            case center
+            let text: String
+            let font: UIFont?
+            let color: UIColor?
         }
-    }
-
-    public struct SystemSubtitle {
-        public init (
-            string: String,
-            font: UIFont? = nil,
-            color: UIColor? = nil
-        ) {
-            self.string = string
-            self.font = font
-            self.color = color
-        }
-
-        let string: String
-        let font: UIFont?
-        let color: UIColor?
     }
 
     // MARK: - SystemLeadingContent
 
     public enum SystemLeadingContent {
-        case image(ImageConfiguration)
+        case image(Image)
 
         public static func image(_ image: UIImage?) -> SystemLeadingContent {
             .image(
-                ImageConfiguration(
-                    image: image
-                )
+                Image(image)
             )
         }
 
-        public struct ImageConfiguration {
+        public struct Image {
             public init(
-                image: UIImage?,
-                corners: Corners? = nil,
+                _ image: UIImage?,
+                corners: Corners = .none,
                 maximumSize: CGSize? = nil
             ) {
                 self.image = image
@@ -184,50 +176,52 @@ extension SystemTableView {
             }
 
             let image: UIImage?
-            let corners: Corners?
+            let corners: Corners
             let maximumSize: CGSize?
 
-            public enum Corners {
-                case rounded(Double)
+            public struct Corners {
+                let value: Double
 
                 public static var none: Corners {
-                    .rounded(0)
+                    Corners(value: 0)
                 }
 
                 public static var circle: Corners {
-                    .rounded(.greatestFiniteMagnitude)
+                    Corners(value: .greatestFiniteMagnitude)
                 }
             }
         }
     }
+}
 
-    // MARK: - SystemTrailingContent
+// MARK: - SystemTrailingContent
 
+extension SystemTableView {
     public enum SystemTrailingContent {
         case checkmark
         case detailButton
         case detailDisclosureButton
         case disclosureIndicator
-        case view(UIView)
+        case customView(UIView)
 
         public static func image(_ image: UIImage) -> SystemTrailingContent {
             let imageView = UIImageView(image: image)
 
-            return .view(imageView)
+            return .customView(imageView)
         }
 
         public static func `switch`(
-            isOn: Bool,
+            enabled: Bool,
             action: @escaping BoolBlock
         ) -> SystemTrailingContent {
             let switchView = UISwitch()
             switchView.onTintColor = SystemColors.Tint.primary
-            switchView.isOn = isOn
+            switchView.isOn = enabled
             switchView.addAction { [weak switchView] in
                 action(switchView?.isOn == true)
             }
 
-            return .view(switchView)
+            return .customView(switchView)
         }
 
         public static func stepper(
@@ -245,7 +239,7 @@ extension SystemTableView {
                 action(value)
             }
 
-            return .view(stepper)
+            return .customView(stepper)
         }
 
         public static func segmentedControl(
@@ -253,18 +247,15 @@ extension SystemTableView {
             selectedIndex: Int,
             action: @escaping IntBlock
         ) -> SystemTrailingContent {
-            let segmentedControl = UISegmentedControl(
-                items: items
-            )
+            let segmentedControl = UISegmentedControl(items: items)
             segmentedControl.selectedSegmentIndex = selectedIndex
             segmentedControl.addAction { [weak segmentedControl] in
-                guard let selectedSegmentIndex = segmentedControl?.selectedSegmentIndex else {
-                    return
-                }
+                guard let selectedSegmentIndex = segmentedControl?.selectedSegmentIndex else { return }
+
                 action(selectedSegmentIndex)
             }
 
-            return .view(segmentedControl)
+            return .customView(segmentedControl)
         }
     }
 }
@@ -272,11 +263,13 @@ extension SystemTableView {
 // MARK: - CustomRow
 
 extension SystemTableView {
+    public typealias Transformer = (UITableViewCell) -> Void
+
     public struct CustomRow {
         public init(
             type: AnyClass,
-            transformer: @escaping (UITableViewCell) -> Void,
-            action: Block?
+            transformer: (Transformer)? = nil,
+            action: Block? = nil
         ) {
             self.type = type
             self.transformer = transformer
@@ -284,7 +277,7 @@ extension SystemTableView {
         }
 
         let type: AnyClass
-        let transformer: (UITableViewCell) -> Void
+        let transformer: (Transformer)?
         let action: Block?
     }
 }
@@ -303,9 +296,9 @@ extension SystemTableView {
             self.color = color
         }
 
-        public var string: String
-        public var font: UIFont?
-        public var color: UIColor?
+        let string: String
+        let font: UIFont?
+        let color: UIColor?
     }
 }
 
@@ -315,19 +308,13 @@ extension SystemTableView {
     public struct SystemFooter {
         public init(
             string: String,
-            alignment: Alignment? = nil
+            alignment: UIListContentConfiguration.TextProperties.TextAlignment? = nil
         ) {
             self.string = string
             self.alignment = alignment
         }
 
         let string: String
-        let alignment: Alignment?
-
-        public enum Alignment {
-            case natural
-            case justified
-            case center
-        }
+        let alignment: UIListContentConfiguration.TextProperties.TextAlignment?
     }
 }
