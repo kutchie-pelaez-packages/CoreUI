@@ -182,6 +182,10 @@ extension SystemTableView {
             public struct Corners {
                 let value: Double
 
+                public static func rounded(_ value: Double) -> Corners {
+                    Corners(value: value)
+                }
+
                 public static var none: Corners {
                     Corners(value: 0)
                 }
