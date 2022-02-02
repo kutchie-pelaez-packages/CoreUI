@@ -2,7 +2,7 @@ import UIKit
 
 private func mutate(
     _ contentConfiguration: inout UIListContentConfiguration,
-    using row: SystemTableView.SystemRow
+    using row: System.TableView.SystemRow
 ) {
     contentConfiguration.text = row.content.title.text
 
@@ -46,7 +46,7 @@ private func mutate(
 
 private func setAccessory(
     for cell: UITableViewCell,
-    using systemRow: SystemTableView.SystemRow
+    using systemRow: System.TableView.SystemRow
 ) {
     cell.accessoryType = .none
     cell.accessoryView = nil
@@ -71,7 +71,7 @@ private func setAccessory(
     }
 }
 
-extension SystemTableView {
+extension System.TableView {
     func configureSystemCell(_ cell: UITableViewCell, using systemRow: SystemRow) {
         var contentConfiguration = cell.defaultContentConfiguration()
         defer { cell.contentConfiguration = contentConfiguration }

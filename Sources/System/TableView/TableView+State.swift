@@ -3,7 +3,7 @@ import UIKit
 
 // MARK: - State
 
-extension SystemTableView {
+extension System.TableView {
     public struct State {
         public init(sections: [Section]) {
             self.sections = sections
@@ -19,7 +19,7 @@ extension SystemTableView {
 
 // MARK: - Section
 
-extension SystemTableView {
+extension System.TableView {
     public struct Section {
         public init(
             rows: [Row],
@@ -39,7 +39,7 @@ extension SystemTableView {
 
 // MARK: - Row
 
-extension SystemTableView {
+extension System.TableView {
     public enum Row {
         case system(SystemRow)
         case custom(CustomRow)
@@ -80,7 +80,7 @@ extension SystemTableView {
 
 // MARK: - SystemRow
 
-extension SystemTableView {
+extension System.TableView {
     public struct SystemRow {
         public init(
             content: SystemContent,
@@ -200,7 +200,7 @@ extension SystemTableView {
 
 // MARK: - SystemTrailingContent
 
-extension SystemTableView {
+extension System.TableView {
     public enum SystemTrailingContent {
         case checkmark
         case detailButton
@@ -219,7 +219,7 @@ extension SystemTableView {
             action: @escaping BoolBlock
         ) -> SystemTrailingContent {
             let switchView = UISwitch()
-            switchView.onTintColor = SystemColors.Tint.primary
+            switchView.onTintColor = System.Colors.Tint.primary
             switchView.isOn = enabled
             switchView.addAction { [weak switchView] in
                 action(switchView?.isOn == true)
@@ -234,7 +234,7 @@ extension SystemTableView {
             action: @escaping DoubleBlock
         ) -> SystemTrailingContent {
             let stepper = UIStepper()
-            stepper.tintColor = SystemColors.Tint.primary
+            stepper.tintColor = System.Colors.Tint.primary
             stepper.stepValue = stepValue
             stepper.value = value
             stepper.addAction { [weak stepper] in
@@ -266,7 +266,7 @@ extension SystemTableView {
 
 // MARK: - CustomRow
 
-extension SystemTableView {
+extension System.TableView {
     public typealias Transformer = (UITableViewCell) -> Void
 
     public struct CustomRow {
@@ -288,7 +288,7 @@ extension SystemTableView {
 
 // MARK: - SystemHeader
 
-extension SystemTableView {
+extension System.TableView {
     public struct SystemHeader {
         public init(
             string: String,
@@ -308,7 +308,7 @@ extension SystemTableView {
 
 // MARK: - SystemFooter
 
-extension SystemTableView {
+extension System.TableView {
     public struct SystemFooter {
         public init(
             string: String,

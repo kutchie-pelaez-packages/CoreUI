@@ -1,7 +1,7 @@
 import UIKit
 import Core
 
-extension SystemTableView: UITableViewDataSource {
+extension System.TableView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         state.sections.count
     }
