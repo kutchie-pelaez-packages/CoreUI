@@ -24,9 +24,9 @@ open class View: UIView {
 
     open func setup() {
         preSetup()
-        subscribeToEvents()
         configureViews()
         constraintViews()
+        subscribeToEvents()
         postSetup()
     }
 
@@ -64,11 +64,11 @@ open class View: UIView {
 
     open func preSetup() { }
 
-    open func subscribeToEvents() { }
-
     open func configureViews() { }
 
     open func constraintViews() { }
+
+    open func subscribeToEvents() { }
 
     open func postSetup() { }
 
