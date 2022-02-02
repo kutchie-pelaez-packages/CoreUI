@@ -1,6 +1,6 @@
 import UIKit
 
-private enum Symbols: Symbol {
+private enum Symbols: SymbolsCollection {
     case xmarkCircleFill
 }
 

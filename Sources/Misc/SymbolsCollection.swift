@@ -3,11 +3,11 @@ import UIKit
 
 // MARK: - Symbol
 
-public protocol Symbol: SymbolChainable {
+public protocol SymbolsCollection: SymbolChainable {
     var systemName: String { get }
 }
 
-extension Symbol {
+extension SymbolsCollection {
     public var systemName: String {
         String(describing: self)
             .camelCaseChunks
@@ -16,7 +16,7 @@ extension Symbol {
     }
 }
 
-extension Symbol {
+extension SymbolsCollection {
     public var image: UIImage {
         safeUndefinedIfNil(
             UIImage(systemName: systemName),

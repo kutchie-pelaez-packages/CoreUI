@@ -2,7 +2,7 @@ import UIKit
 
 private let size = CGSize(22)
 
-private enum Symbols: Symbol {
+private enum Symbols: SymbolsCollection {
     case checkmark
 }
 
