@@ -19,7 +19,7 @@ open class Button: UIButton {
 
     // MARK: -
 
-    func setup() {
+    private func setup() {
         preSetup()
         configureViews()
         postSetup()
@@ -29,7 +29,7 @@ open class Button: UIButton {
         }
     }
 
-    // MARK: - Overridable methods
+    // MARK: - Public interface
 
     open func preSetup() { }
 

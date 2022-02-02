@@ -1,6 +1,6 @@
 import UIKit
 
-private let defaultDimension: Double = 0.5
+private let defaultWidth: Double = 0.5
 
 public final class Separator: View {
     public enum Style {
@@ -8,11 +8,11 @@ public final class Separator: View {
         case horizontal(Double)
 
         public static var vertical: Self {
-            .vertical(defaultDimension)
+            .vertical(defaultWidth)
         }
 
         public static var horizontal: Self {
-            .horizontal(defaultDimension)
+            .horizontal(defaultWidth)
         }
     }
 
