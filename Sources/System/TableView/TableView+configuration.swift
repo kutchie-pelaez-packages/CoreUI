@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 private func mutate(
     _ contentConfiguration: inout UIListContentConfiguration,
@@ -101,13 +102,17 @@ extension System.TableView {
             attributes[.foregroundColor] = color
         }
 
+        if let transform = systemHeader.transform {
+            contentConfiguration.textProperties.transform = transform
+        }
+
         if attributes.isNotEmpty {
             contentConfiguration.attributedText = NSAttributedString(
-                string: systemHeader.string,
+                string: systemHeader.text,
                 attributes: attributes
             )
         } else {
-            contentConfiguration.text = systemHeader.string
+            contentConfiguration.text = systemHeader.text
         }
     }
 
@@ -115,7 +120,7 @@ extension System.TableView {
         var contentConfiguration = footer.defaultContentConfiguration()
         defer { footer.contentConfiguration = contentConfiguration }
 
-        contentConfiguration.text = systemFooter.string
+        contentConfiguration.text = systemFooter.text
 
         if let footerAlignment = systemFooter.alignment {
             contentConfiguration.textProperties.alignment = footerAlignment

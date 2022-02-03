@@ -48,6 +48,9 @@ extension System.TableView: UITableViewDelegate {
 
         case let .custom(customRow):
             return customRow.action.isNotNil
+
+        case let .view(viewRow):
+            return viewRow.action.isNotNil
         }
     }
 
@@ -70,6 +73,9 @@ extension System.TableView: UITableViewDelegate {
 
         case let .custom(customRow):
             customRow.action?()
+
+        case let .view(viewRow):
+            viewRow.action?()
         }
     }
 }

@@ -37,6 +37,7 @@ extension System {
             dataSource = self
             delegate = self
             register(cellClass: UITableViewCell.self)
+            register(cellClass: ViewCell.self)
             register(headerFooterClass: UITableViewHeaderFooterView.self)
         }
 

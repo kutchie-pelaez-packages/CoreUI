@@ -43,6 +43,7 @@ extension System.TableView {
     public enum Row {
         case system(SystemRow)
         case custom(CustomRow)
+        case view(ViewRow)
 
         public init(
             content: SystemContent,
@@ -71,6 +72,20 @@ extension System.TableView {
                 CustomRow(
                     type: type,
                     transformer: transformer,
+                    action: action
+                )
+            )
+        }
+
+        public init(
+            constructor: @escaping Constructor,
+            constraining: ViewRow.Constraining = .fill,
+            action: Block? = nil
+        ) {
+            self = .view(
+                ViewRow(
+                    constructor: constructor,
+                    constraining: constraining,
                     action: action
                 )
             )
@@ -286,23 +301,71 @@ extension System.TableView {
     }
 }
 
+// MARK: - ViewRow
+
+extension System.TableView {
+    public typealias Constructor = () -> UIView
+
+    public struct ViewRow {
+        public init(
+            constructor: @escaping Constructor,
+            constraining: Constraining = .fill,
+            action: Block? = nil
+        ) {
+            self.constructor = constructor
+            self.constraining = constraining
+            self.action = action
+        }
+
+        let constructor: Constructor
+        let constraining: Constraining
+        let action: Block?
+
+        public enum Constraining {
+            case fill(insets: UIEdgeInsets)
+            case center(topInset: Double = 0, bottomInset: Double = 0, centerInset: Double = 0)
+            case leading(topInset: Double = 0, bottomInset: Double = 0, leadingInset: Double = 0)
+            case trailing(topInset: Double = 0, bottomInset: Double = 0, trailingInset: Double = 0)
+
+            public static var fill: Constraining {
+                .fill(insets: .zero)
+            }
+
+            public static var center: Constraining {
+                .center()
+            }
+
+            public static var leading: Constraining {
+                .leading()
+            }
+
+            public static var trailing: Constraining {
+                .trailing()
+            }
+        }
+    }
+}
+
 // MARK: - SystemHeader
 
 extension System.TableView {
     public struct SystemHeader {
         public init(
-            string: String,
+            text: String,
             font: UIFont? = nil,
-            color: UIColor? = nil
+            color: UIColor? = nil,
+            transform: UIListContentConfiguration.TextProperties.TextTransform? = nil
         ) {
-            self.string = string
+            self.text = text
             self.font = font
             self.color = color
+            self.transform = transform
         }
 
-        let string: String
+        let text: String
         let font: UIFont?
         let color: UIColor?
+        let transform: UIListContentConfiguration.TextProperties.TextTransform?
     }
 }
 
@@ -311,14 +374,14 @@ extension System.TableView {
 extension System.TableView {
     public struct SystemFooter {
         public init(
-            string: String,
+            text: String,
             alignment: UIListContentConfiguration.TextProperties.TextAlignment? = nil
         ) {
-            self.string = string
+            self.text = text
             self.alignment = alignment
         }
 
-        let string: String
+        let text: String
         let alignment: UIListContentConfiguration.TextProperties.TextAlignment?
     }
 }

@@ -41,6 +41,12 @@ extension System.TableView: UITableViewDataSource {
             let customCell = tableView.dequeueReusableCell(withIdentifier: cellClass.reusableIdentifier, for: indexPath)
             customRow.transformer?(customCell)
             cell = customCell
+
+        case let .view(viewRow):
+            let viewCell: ViewCell = tableView.dequeueCell(for: indexPath)
+            let embeddingView = viewRow.constructor()
+            viewCell.embed(embeddingView, using: viewRow.constraining)
+            cell = viewCell
         }
 
         return cell

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CEDB42E27AADD9E006D1152 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEDB42D27AADD9E006D1152 /* Application.swift */; };
-		2CEDB43027AADDBE006D1152 /* ComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEDB42F27AADDBE006D1152 /* ComponentsViewController.swift */; };
+		2CEDB43027AADDBE006D1152 /* SystemViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEDB42F27AADDBE006D1152 /* SystemViewsViewController.swift */; };
 		2CEDB43527AADDD9006D1152 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEDB43427AADDD9006D1152 /* CoreUI */; };
 		2CEDB43727AADE13006D1152 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEDB43627AADE13006D1152 /* AppIcon.xcassets */; };
 		2CEDB43927AADE3C006D1152 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEDB43827AADE3C006D1152 /* main.swift */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		2C94552C27AADD6C00C6E22F /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CEDB42D27AADD9E006D1152 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		2CEDB42F27AADDBE006D1152 /* ComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewController.swift; sourceTree = "<group>"; };
+		2CEDB42F27AADDBE006D1152 /* SystemViewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemViewsViewController.swift; sourceTree = "<group>"; };
 		2CEDB43227AADDD3006D1152 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreUI; path = ..; sourceTree = "<group>"; };
 		2CEDB43627AADE13006D1152 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		2CEDB43827AADE3C006D1152 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				2CEDB43627AADE13006D1152 /* AppIcon.xcassets */,
 				2CEDB42D27AADD9E006D1152 /* Application.swift */,
-				2CEDB42F27AADDBE006D1152 /* ComponentsViewController.swift */,
+				2CEDB42F27AADDBE006D1152 /* SystemViewsViewController.swift */,
 				2CEDB43827AADE3C006D1152 /* main.swift */,
 			);
 			path = Client;
@@ -151,7 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CEDB43027AADDBE006D1152 /* ComponentsViewController.swift in Sources */,
+				2CEDB43027AADDBE006D1152 /* SystemViewsViewController.swift in Sources */,
 				2CEDB42E27AADD9E006D1152 /* Application.swift in Sources */,
 				2CEDB43927AADE3C006D1152 /* main.swift in Sources */,
 			);
