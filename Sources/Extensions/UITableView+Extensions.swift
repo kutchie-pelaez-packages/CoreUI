@@ -23,7 +23,7 @@ extension UITableView {
         ) as? T {
             return cell
         } else {
-            appFatalError("Cell for (\(T.reusableIdentifier)) identifier is not registered")
+            crash("Cell for (\(T.reusableIdentifier)) identifier is not registered")
         }
     }
 
@@ -33,7 +33,7 @@ extension UITableView {
         ) as? T {
             return headerFooter
         } else {
-            appFatalError("HeaderFooter for (\(T.reusableIdentifier)) identifier is not registered")
+            crash("HeaderFooter for (\(T.reusableIdentifier)) identifier is not registered")
         }
     }
 }

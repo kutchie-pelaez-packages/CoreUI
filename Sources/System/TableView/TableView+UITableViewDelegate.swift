@@ -39,7 +39,7 @@ extension System.TableView: UITableViewDelegate {
             let section = state.sections[safe: indexPath.section],
             let row = section.rows[safe: indexPath.row]
         else {
-            appFatalError("Failed to access row at \(indexPath)")
+            crash("Failed to access row at \(indexPath)")
         }
 
         switch row {
@@ -59,7 +59,7 @@ extension System.TableView: UITableViewDelegate {
             let section = state.sections[safe: indexPath.section],
             let row = section.rows[safe: indexPath.row]
         else {
-            appFatalError("Failed to access row at \(indexPath)")
+            crash("Failed to access row at \(indexPath)")
         }
 
         tableView.deselectRow(

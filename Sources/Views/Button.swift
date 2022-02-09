@@ -14,7 +14,7 @@ open class Button: UIButton {
 
     @available(*, unavailable)
     required public init?(coder: NSCoder) {
-        appFatalError()
+        crash()
     }
 
     // MARK: -

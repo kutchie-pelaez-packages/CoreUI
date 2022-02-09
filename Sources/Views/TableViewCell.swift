@@ -14,7 +14,7 @@ open class TableViewCell: UITableViewCell {
 
     @available(*, unavailable)
     required public init?(coder: NSCoder) {
-        appFatalError()
+        crash()
     }
 
     private var isSized = false

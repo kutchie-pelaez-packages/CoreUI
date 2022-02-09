@@ -15,7 +15,7 @@ open class View: UIView {
 
     @available(*, unavailable)
     public required init?(coder: NSCoder) {
-        appFatalError()
+        crash()
     }
 
     private var isSized = false
@@ -25,8 +25,8 @@ open class View: UIView {
     open func setup() {
         preSetup()
         configureViews()
-        constraintViews()
         subscribeToEvents()
+        constraintViews()
         postSetup()
     }
 
@@ -66,9 +66,9 @@ open class View: UIView {
 
     open func configureViews() { }
 
-    open func constraintViews() { }
-
     open func subscribeToEvents() { }
+
+    open func constraintViews() { }
 
     open func postSetup() { }
 

@@ -11,7 +11,7 @@ open class ViewController: UIViewController {
 
     @available(*, unavailable)
     public required init?(coder: NSCoder) {
-        appFatalError()
+        crash()
     }
 
     // MARK: -
@@ -30,9 +30,9 @@ open class ViewController: UIViewController {
         super.viewDidLoad()
 
         preSetup()
-        subscribeToEvents()
         configureViews()
         configureNavigationBar()
+        subscribeToEvents()
         constraintViews()
         postSetup()
 
@@ -84,11 +84,11 @@ open class ViewController: UIViewController {
 
     open func preSetup() { }
 
-    open func subscribeToEvents() { }
-
     open func configureViews() { }
 
     open func configureNavigationBar() { }
+
+    open func subscribeToEvents() { }
 
     open func constraintViews() { }
 

@@ -22,7 +22,7 @@ extension System.TableView: UITableViewDataSource {
             let section = state.sections[safe: indexPath.section],
             let row = section.rows[safe: indexPath.row]
         else {
-            appFatalError("Failed to access row at \(indexPath)")
+            crash("Failed to access row at \(indexPath)")
         }
 
         let cell: UITableViewCell

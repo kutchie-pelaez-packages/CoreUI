@@ -19,7 +19,7 @@ extension System {
         }
 
         required init?(coder: NSCoder) {
-            appFatalError()
+            crash()
         }
 
         // MARK: - Public interface

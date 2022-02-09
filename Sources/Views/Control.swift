@@ -15,7 +15,7 @@ open class Control: UIControl {
 
     @available(*, unavailable)
     public required init?(coder: NSCoder) {
-        appFatalError()
+        crash()
     }
 
     private var isSized = false
