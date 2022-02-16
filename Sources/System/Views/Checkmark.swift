@@ -13,13 +13,13 @@ public final class Checkmark: View {
         public var border: Border
 
         public struct Background {
-            var selected: UIColor
-            var unselected: UIColor
+            public var selected: UIColor
+            public var unselected: UIColor
         }
 
         public struct Border {
-            var selected: UIColor
-            var unselected: UIColor
+            public var selected: UIColor
+            public var unselected: UIColor
         }
     }
 
