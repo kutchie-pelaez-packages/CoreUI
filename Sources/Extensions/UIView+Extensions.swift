@@ -59,4 +59,12 @@ extension UIView {
             subview.removeFromSuperview()
         }
     }
+
+    @objc open func makeSnapshot() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+
+        return renderer.image { context in
+            layer.render(in: context.cgContext)
+        }
+    }
 }
