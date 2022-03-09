@@ -81,7 +81,7 @@ public func animation(
 }
 
 @MainActor
-public func animation(_ animation: Animation) async {
+public func asyncAnimation(_ animation: Animation) async {
     let animation =  Animation(
         after: animation.delay,
         duration: animation.duration,
@@ -99,7 +99,7 @@ public func animation(_ animation: Animation) async {
 }
 
 @MainActor
-public func animation(
+public func asyncAnimation(
     after delay: TimeInterval = .zero,
     duration: TimeInterval,
     spring: AnimationSpring? = nil,
