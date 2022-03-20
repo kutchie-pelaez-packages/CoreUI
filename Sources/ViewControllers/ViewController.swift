@@ -19,6 +19,7 @@ open class ViewController: UIViewController {
     private var isViewSized = false
 
     private var viewDidLoadBlocks = [Block]()
+    private var viewDidLayoutBlocks = [Block]()
 
     // MARK: - System methods
 
@@ -64,6 +65,10 @@ open class ViewController: UIViewController {
             !isViewSized
         {
             isViewSized = true
+
+            viewDidLayoutBlocks.forEach { $0() }
+            viewDidLayoutBlocks.removeAll()
+
             viewDidSized()
         }
     }
@@ -79,6 +84,14 @@ open class ViewController: UIViewController {
             block()
         } else {
             viewDidLoadBlocks.append(block)
+        }
+    }
+
+    public func invokeWhenViewIsLayouted(_ block: @escaping Block) {
+        if view.frame.isNotEmpty {
+            block()
+        } else {
+            viewDidLayoutBlocks.append(block)
         }
     }
 
