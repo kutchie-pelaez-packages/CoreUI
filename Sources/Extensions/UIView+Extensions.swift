@@ -35,9 +35,7 @@ extension UIView {
     }
 
     public func addSubviews(_ subviews: [UIView?]) {
-        for subview in subviews.compactMap({ $0 }) {
-            addSubview(subview)
-        }
+        subviews.unwrapped().forEach(addSubview)
     }
 
     public func addSubviews(_ subviews: UIView?...) {
